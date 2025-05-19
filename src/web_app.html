@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHT11 Sensor Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .sensor-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .sensor-value {
+            font-size: 48px;
+            font-weight: bold;
+            color: #1a73e8;
+            margin: 10px 0;
+        }
+        .sensor-label {
+            font-size: 18px;
+            color: #5f6368;
+            margin-bottom: 5px;
+        }
+        .last-update {
+            font-size: 14px;
+            color: #80868b;
+            margin-top: 5px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #202124;
+            margin-bottom: 10px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>DHT11 Sensor Dashboard</h1>
+            <p>Real-time temperature and humidity monitoring</p>
+        </div>
+        <div class="grid">
+            <div class="sensor-card">
+                <div class="sensor-label">Temperature</div>
+                <div class="sensor-value" id="temperature">--</div>
+                <div>°C</div>
+                <div class="last-update" id="temp-update">Last update: --</div>
+            </div>
+            <div class="sensor-card">
+                <div class="sensor-label">Humidity</div>
+                <div class="sensor-value" id="humidity">--</div>
+                <div>%</div>
+                <div class="last-update" id="humid-update">Last update: --</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-analytics.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBiYP9n3SArwd1J-yrWoJlVHAEUeB5oCsQ",
+            authDomain: "aiotweb-ce263.firebaseapp.com",
+            databaseURL: "https://aiotweb-ce263-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "aiotweb-ce263",
+            storageBucket: "aiotweb-ce263.firebasestorage.app",
+            messagingSenderId: "1050959934296",
+            appId: "1:1050959934296:web:d87440c7f0188f8f886b2d",
+            measurementId: "G-BQTT1E21JB"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+
+        // Get references to the DOM elements
+        const tempElement = document.getElementById('temperature');
+        const humidElement = document.getElementById('humidity');
+        const tempUpdateElement = document.getElementById('temp-update');
+        const humidUpdateElement = document.getElementById('humid-update');
+
+        // Function to format the timestamp
+        function formatTimestamp() {
+            const now = new Date();
+            return now.toLocaleTimeString();
+        }
+
+        // Listen for temperature updates
+        const tempRef = ref(database, 'DHT_11/Temperature');
+        onValue(tempRef, (snapshot) => {
+            const temperature = snapshot.val();
+            if (temperature !== null) {
+                tempElement.textContent = temperature.toFixed(1);
+                tempUpdateElement.textContent = 'Last update: ' + formatTimestamp();
+            }
+        });
+
+        // Listen for humidity updates
+        const humidRef = ref(database, 'DHT_11/Humidity');
+        onValue(humidRef, (snapshot) => {
+            const humidity = snapshot.val();
+            if (humidity !== null) {
+                humidElement.textContent = humidity.toFixed(1);
+                humidUpdateElement.textContent = 'Last update: ' + formatTimestamp();
+            }
+        });
+    </script>
+</body>
+</html>
