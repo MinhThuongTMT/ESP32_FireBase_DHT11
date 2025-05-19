@@ -44,15 +44,15 @@ graph LR
 
 🔹 Bước 1: Tạo Project trên Firebase
 
-- **Truy cập Firebase Console, nhấn Add project, điền tên và hoàn tất các bước tạo mới.
+- Truy cập Firebase Console, nhấn Add project, điền tên và hoàn tất các bước tạo mới.
 
-- **Vào Build → Authentication → Sign-in method → Bật Anonymous để cho phép thiết bị ESP32 đăng nhập không cần tài khoản.
+- Vào Build → Authentication → Sign-in method → Bật Anonymous để cho phép thiết bị ESP32 đăng nhập không cần tài khoản.
 
-- **Vào Build → Realtime Database → Create Database:
+- Vào Build → Realtime Database → Create Database:
 
-- **Chọn location: Singapore (asia-southeast1)
++ Chọn location: Singapore (asia-southeast1)
 
-- **Chọn chế độ: Start in test mode (cho phép đọc/ghi toàn quyền, có thể thay đổi sau)
++ Chọn chế độ: Start in test mode (cho phép đọc/ghi toàn quyền, có thể thay đổi sau)
 
 🔹 Bước 2: Lấy Thông Tin Cấu Hình Firebase
 
@@ -62,7 +62,7 @@ graph LR
 
 Sao chép các thông tin sau:
 json
-
+```cpp
 {
   "apiKey": "AIzaSyBiYP9n3SArwd1J-yrWoJlVHAEUeB5oCsQ",
   "authDomain": "aiotweb-ce263.firebaseapp.com",
@@ -73,14 +73,14 @@ json
   "appId": "1:1050959934296:web:d87440c7f0188f8f886b2d",
   "measurementId": "G-BQTT1E21JB"
 }
+```
 Ghi lại databaseURL và apiKey để cấu hình trong chương trình ESP32.
 
 🔹 Bước 3: (Tuỳ chọn) Kết nối Firebase với Web App
 Bạn có thể sử dụng Firebase JS SDK để hiển thị dữ liệu từ ESP32 theo thời gian thực lên giao diện web:
 
 html
-Sao chép
-Chỉnh sửa
+```cpp
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-analytics.js";
@@ -99,18 +99,18 @@ Chỉnh sửa
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
-✅ Sau khi hoàn tất, bạn có thể upload chương trình lên ESP32. Thiết bị sẽ:
+```
+## ✅ Sau khi hoàn tất, bạn có thể upload chương trình lên ESP32. Thiết bị sẽ:
 
-Kết nối Wi‑Fi qua WiFiManager
+- Kết nối Wi‑Fi qua WiFiManager
 
-Đọc nhiệt độ & độ ẩm từ DHT11
+- Đọc nhiệt độ & độ ẩm từ DHT11
 
-Hiển thị trên LCD
+- Hiển thị trên LCD
 
-Gửi dữ liệu lên Firebase Realtime Database theo chu kỳ 30 giây.
+- Gửi dữ liệu lên Firebase Realtime Database theo chu kỳ 30 giây.
 
-Nếu bạn muốn, mình có thể viết tiếp phần Triển khai, Cấu trúc dự án, hoặc API Realtime Database. Bạn chỉ cần nói nhé.
-
+Nếu bạn muốn, mình có thể viết tiếp phần Triển khai, Cấu trúc dự án, hoặc API Realtime Database.
 
 
 
