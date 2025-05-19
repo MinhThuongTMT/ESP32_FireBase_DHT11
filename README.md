@@ -115,7 +115,8 @@ html
 ## ❤️ Góp ý & Liên hệ
 
 📩 Email: tranminhthuong08082003@gmail.com  
-⭐ Nếu bạn thấy dự án hữu ích, hãy để lại một **Star ⭐ trên GitHub** để ủng hộ nhóm nhé!
+
+⭐ Nếu bạn thấy dự án hữu ích, hãy để lại một **Star ⭐ trên GitHub** để ủng hộ mình nhé!
 
 > Made with ❤️ by **Tran Minh Thuong**
 
