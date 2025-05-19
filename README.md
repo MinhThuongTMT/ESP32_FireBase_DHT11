@@ -3,7 +3,10 @@
 > **Giám sát nhiệt độ & độ ẩm real‑time với ESP32, DHT11, LCD I²C và Firebase Realtime Database**
 
 ![image](https://github.com/user-attachments/assets/9e7f856f-32c5-4467-848f-2d19e0c756c1)
+> **Hình ảnh trên Web**
 
+![image](https://github.com/user-attachments/assets/ba8aacb3-dafe-4221-ad50-d22b4bf4cc83)
+> **Hình ảnh trên RealTime Database of FireBase**
 ---
 
 ## ✨ Tính năng chính
