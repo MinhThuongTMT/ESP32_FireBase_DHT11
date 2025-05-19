@@ -2,7 +2,7 @@
 
 > **Giám sát nhiệt độ & độ ẩm real‑time với ESP32, DHT11, LCD I²C và Firebase Realtime Database**
 
-![Banner](./assets/banner.png)
+![image](https://github.com/user-attachments/assets/9e7f856f-32c5-4467-848f-2d19e0c756c1)
 
 ---
 
@@ -109,6 +109,17 @@ html
 - Hiển thị trên LCD
 
 - Gửi dữ liệu lên Firebase Realtime Database theo chu kỳ 30 giây.
+
+---
+
+## ❤️ Góp ý & Liên hệ
+
+📩 Email: tranminhthuong08082003@gmail.com  
+⭐ Nếu bạn thấy dự án hữu ích, hãy để lại một **Star ⭐ trên GitHub** để ủng hộ nhóm nhé!
+
+> Made with ❤️ by **Tran Minh Thuong**
+
+---
 
 Nếu bạn muốn, mình có thể viết tiếp phần Triển khai, Cấu trúc dự án, hoặc API Realtime Database.
 
